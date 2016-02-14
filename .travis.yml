@@ -4,5 +4,5 @@ notifications:
     recipients:
       - ibmttz13.5@gmail.com
       - alzmievskiy@inbox.ru
-    on_success: [always|never|change] # default: always
-    on_failure: [always|never|change] # default: always
+    on_success: always
+    on_failure: always
