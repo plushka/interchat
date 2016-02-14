@@ -1,38 +1,34 @@
 package com.interchat.dao;
 
 import com.interchat.domain.User;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceUnit;
 import java.util.List;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
 
-    private EntityManager entityManager;
+    @Autowired
+    private SessionFactory sessionFactory;
 
 
-    @PersistenceUnit
-    public void setEntityManagerFactory(EntityManagerFactory emf) {
-        entityManager = emf.createEntityManager();
-    }
 
     public void addUser(User user) {
-        entityManager.persist(user);
+        sessionFactory.getCurrentSession().save(user);
     }
 
     @SuppressWarnings("unchecked")
     public List<User> listUsers() {
-        return entityManager.
-                createQuery("from Users").getResultList();
+        return sessionFactory.getCurrentSession().createQuery("from Users")
+                .list();
     }
 
     public void removeUser(Integer id) {
-        User user = entityManager.find(User.class, id);
-        if (user != null) {
-            entityManager.remove(user);
+        User user = sessionFactory.getCurrentSession().load(
+                User.class, id);
+        if (null != user) {
+            sessionFactory.getCurrentSession().delete(user);
         }
     }
 

@@ -40,6 +40,26 @@
       <version>4.2.3.RELEASE</version>
     </dependency>
     <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
+      <version>4.2.3.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-web</artifactId>
+      <version>4.0.3.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-config</artifactId>
+      <version>4.0.3.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-core</artifactId>
+      <version>4.0.3.RELEASE</version>
+    </dependency>
+    <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>jcl-over-slf4j</artifactId>
       <version>${jcl-over-slf4j.version}</version>
@@ -49,33 +69,53 @@
       <artifactId>logback-classic</artifactId>
       <version>${logback.version}</version>
     </dependency>
-    <dependency>
-      <groupId>javax.persistence</groupId>
-      <artifactId>persistence-api</artifactId>
-      <version>1.0</version>
-    </dependency>
-    <dependency>
+
+      <dependency>
+          <groupId>org.hibernate.javax.persistence</groupId>
+          <artifactId>hibernate-jpa-2.1-api</artifactId>
+          <version>1.0.0.Final</version>
+      </dependency>
+
+      <dependency>
         <groupId>org.hibernate</groupId>
         <artifactId>hibernate-core</artifactId>
         <version>5.0.4.Final</version>
     </dependency>
     <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-orm</artifactId>
-        <version>4.2.3.RELEASE</version>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-annotations</artifactId>
+      <version>3.5.6-Final</version>
     </dependency>
-    <dependency>
-      <groupId>javax.transaction</groupId>
-      <artifactId>jta</artifactId>
-      <version>1.1</version>
-    </dependency>
+      <dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-commons-annotations</artifactId>
+          <version>3.2.0.Final</version>
+      </dependency>
+      <dependency>
+          <groupId>javax.transaction</groupId>
+          <artifactId>jta</artifactId>
+          <version>1.1</version>
+      </dependency>
       <dependency>
           <groupId>mysql</groupId>
           <artifactId>mysql-connector-java</artifactId>
           <version>5.1.6</version>
       </dependency>
   </dependencies>
+
   <build>
     <finalName>interchat</finalName>
+
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.3</version>
+          <configuration>
+            <source>1.6</source>
+            <target>1.6</target>
+          </configuration>
+        </plugin>
+      </plugins>
   </build>
 </project>

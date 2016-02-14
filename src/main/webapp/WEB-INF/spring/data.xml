@@ -10,6 +10,8 @@
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+    <tx:annotation-driven transaction-manager="transactionManager" />
+
     <bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
           p:location="/WEB-INF/jdbc.properties"/>
@@ -27,48 +29,23 @@
         <property name="defaultEncoding" value="UTF-8" />
     </bean>
 
-    <tx:annotation-driven transaction-manager="transactionManager" />
 
-    <!--<bean id="transactionManager"-->
-          <!--class="org.springframework.orm.hibernate5.HibernateTransactionManager">-->
-        <!--<property name="sessionFactory" ref="sessionFactory" />-->
-    <!--</bean>-->
-
-    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-        <property name="entityManagerFactory" ref="entityManagerFactory" />
-        <property name="dataSource" ref="dataSource" />
-        <property name="jpaDialect" ref="jpaDialect" />
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 
-    <!--<bean id="sessionFactory"-->
-          <!--class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">-->
-        <!--<property name="dataSource" ref="dataSource" />-->
-        <!--<property name="configLocation" value="classpath:hibernate.cfg.xml"/>-->
-        <!--<property name="hibernateProperties">-->
-            <!--<props>-->
-                <!--<prop key="hibernate.show_sql">true</prop>-->
-                <!--<prop key="hibernate.dialect">${jdbc.dialect}</prop>-->
-                <!--<prop key="hibernate.connection.charSet">UTF-8</prop>-->
-            <!--</props>-->
-        <!--</property>-->
-    <!--</bean>-->
-
-
-    <bean id="entityManagerFactory"
-          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" />
-        <property name="persistenceUnitName" value="personPersistenceUnit" />
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
-        <property name="jpaDialect" ref="jpaDialect" />
-    </bean>
-
-    <bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
-
-    <bean id="jpaVendorAdapter"
-          class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-        <property name="database" value="HSQL" />
-        <property name="databasePlatform" value="{jdbc.dialect}" />
+        <property name="configLocation" value="classpath:hibernate.cfg.xml"/>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.dialect">${jdbc.dialect}</prop>
+                <prop key="hibernate.connection.charSet">UTF-8</prop>
+            </props>
+        </property>
     </bean>
 
 
