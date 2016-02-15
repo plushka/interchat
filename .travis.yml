@@ -3,6 +3,6 @@ notifications:
   email:
     recipients:
       - ibmttz13.5@gmail.com
-      - alzmievskiy@inbox.ru
+      - al.zmievskiy@gmail.com
     on_success: always
     on_failure: always
