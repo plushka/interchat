@@ -79,15 +79,10 @@
         <artifactId>hibernate-core</artifactId>
         <version>5.0.4.Final</version>
     </dependency>
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-annotations</artifactId>
-      <version>3.5.6-Final</version>
-    </dependency>
       <dependency>
-          <groupId>org.hibernate</groupId>
+          <groupId>org.hibernate.common</groupId>
           <artifactId>hibernate-commons-annotations</artifactId>
-          <version>3.2.0.Final</version>
+          <version>5.0.1.Final</version>
       </dependency>
       <dependency>
           <groupId>javax.transaction</groupId>
@@ -114,6 +109,22 @@
             <target>1.6</target>
           </configuration>
         </plugin>
+
+
+          <plugin>
+              <groupId>org.apache.tomcat.maven</groupId>
+              <artifactId>tomcat7-maven-plugin</artifactId>
+              <version>2.2</version>
+              <configuration>
+                  <url>http://localhost:8080/manager/text</url>
+                  <server>TomcatServer</server>
+                  <path>/interchat</path>
+                  <username>TomcatAdmin</username>
+                  <password>admin</password>
+              </configuration>
+          </plugin>
+
+
       </plugins>
   </build>
 </project>
