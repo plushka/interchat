@@ -163,8 +163,8 @@
               </executions>
               <configuration>
                   <wroManagerFactory>ro.isdc.wro.maven.plugin.manager.factory.ConfigurableWroManagerFactory</wroManagerFactory>
-                  <cssDestinationFolder>${project.build.directory}/generated-resources/pages/static/css</cssDestinationFolder>
-                  <jsDestinationFolder>${project.build.directory}/generated-resources/pages/static/js</jsDestinationFolder>
+                  <cssDestinationFolder>${project.build.directory}/generated-resources/static/css</cssDestinationFolder>
+                  <jsDestinationFolder>${project.build.directory}/generated-resources/static/js</jsDestinationFolder>
                   <wroFile>${project.build.directory}/wro/wro.xml</wroFile>
                   <extraConfigFile>${basedir}/src/main/wro/wro.properties</extraConfigFile>
                   <contextFolder>${basedir}/src/main/wro</contextFolder>

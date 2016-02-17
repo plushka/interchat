@@ -12,11 +12,11 @@
 
     <bean
         class = "org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/classes/pages/"/>
+        <property name="prefix" value="/WEB-INF/classes/serverpages/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <mvc:resources mapping="/static/**" location="/WEB-INF/classes/pages/static/" />
+    <mvc:resources mapping="/static/**" location="/WEB-INF/classes/static/" />
 
     <import resource="controllers.xml"/>
 
