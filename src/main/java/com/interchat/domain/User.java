@@ -23,6 +23,16 @@ public class User {
     @Column(name = "NICKNAME")
     private String nickname;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    private String name;
+
     public Integer getId() {
         return id;
     }
