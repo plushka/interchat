@@ -1,4 +1,8 @@
 angular.module('hello', [])
-  .controller('home', function() {
-    this.greeting = {id: 'xxx', content: 'Hello World!'}
-})
+  .controller('home', function($http) {
+  var rootContext = '/interchat';
+  var self = this;
+  $http.get(rootContext + '/rest/resource/').success(function(data) {
+    self.greeting = data;
+  })
+});
