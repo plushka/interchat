@@ -16,36 +16,41 @@ angular.module('hello', [ 'ngRoute' ])
   })
   .controller('home', function($http) {
     var self = this;
-    var rootContext = '/interchat';
-    $http.get(rootContext + '/rest/resource/').success(function(data) {
+    var rootContext = '/';
+    $http.get(rootContext + 'rest/resource/').success(function(data) {
       self.greeting = data;
     })
   })
 .controller('navigation',
 
   function($rootScope, $http, $location) {
+    var self = this;
+    var authenticate = function(credentials, callback) {
 
-  var self = this
 
-  var authenticate = function(credentials, callback) {
+        var headers = credentials ? {authorization : "Basic "
+            + btoa(credentials.username + ":" + credentials.password)
+        } : {};
+        if (credentials) {
 
-    var headers = credentials ? {authorization : "Basic "
-        + btoa(credentials.username + ":" + credentials.password)
-    } : {};
-    var rootContext = '/interchat';
-    $http.get(rootContext + '/rest/user/', {headers : headers}).success(function(data) {
-      if (data.name) {
-        $rootScope.authenticated = true;
-      } else {
-        $rootScope.authenticated = false;
-      }
-      callback && callback();
-    }).error(function() {
-      $rootScope.authenticated = false;
-      callback && callback();
-    });
+            console.log("authentication: username = " + credentials.username + ", password = " + credentials.password);
+            console.log("headers: " + headers)
+        }
 
-  }
+        var rootContext = '/';
+        $http.get(rootContext + 'rest/user/', {headers : headers}).success(function(data) {
+          if (data.name) {
+            $rootScope.authenticated = true;
+          } else {
+            $rootScope.authenticated = false;
+          }
+          callback && callback();
+        }).error(function() {
+          $rootScope.authenticated = false;
+          callback && callback();
+        });
+
+    };
 
   authenticate();
   self.credentials = {};

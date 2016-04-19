@@ -1,6 +1,9 @@
 package com.interchat.web.controller;
 
+import com.interchat.common.Credentials;
 import com.interchat.domain.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.HashMap;
@@ -11,6 +14,8 @@ import java.util.UUID;
 @RequestMapping(value = "/rest")
 public class RestController {
 
+    private final static Logger logger = LoggerFactory.getLogger(BaseController.class);
+
     @RequestMapping("/resource")
     public Map<String, Object> home() {
         Map<String, Object> model = new HashMap<String, Object>();
@@ -20,8 +25,8 @@ public class RestController {
     }
 
     @RequestMapping("/user")
-    public User user(User user) {
-
+    public User user(String credentials) {
+        logger.debug("User name = " + credentials);
         User testUser = new User();
         testUser.setName("TestName");
         return testUser;
