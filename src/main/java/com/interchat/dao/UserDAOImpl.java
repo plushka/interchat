@@ -3,10 +3,11 @@ package com.interchat.dao;
 import com.interchat.domain.User;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
-@Repository
+@Component
 public class UserDAOImpl implements UserDAO {
 
     @Autowired

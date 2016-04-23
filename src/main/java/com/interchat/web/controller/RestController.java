@@ -1,7 +1,5 @@
 package com.interchat.web.controller;
 
-import com.interchat.common.Credentials;
-import com.interchat.domain.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
