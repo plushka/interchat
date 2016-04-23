@@ -23,6 +23,9 @@ public class User {
     @Column(name = "NICKNAME")
     private String nickname;
 
+    @Column(name = "PASSWORD")
+    private String password;
+
 
     public Integer getId() {
         return id;
@@ -58,5 +61,13 @@ public class User {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
