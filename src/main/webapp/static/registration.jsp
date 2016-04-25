@@ -53,7 +53,7 @@
     <button type="submit"><spring:message code="label.form.submit"/></button>
 </form:form>
 <br>
-<a href="<c:url value="login.html" />">
+<a href="<c:url value="../login" />">
     <spring:message code="label.form.loginLink"/>
 </a>
 </body>
