@@ -47,3 +47,5 @@ Temporary Items
 .apdisk
 .idea/
 target/
+src/main/webapp/WEB-INF/jdbc.properties
+interchat.iml
