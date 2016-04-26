@@ -10,8 +10,7 @@
 
 <!--<beans:bean name="security" class="com.interchat.security.SecSecurityConfig" />-->
     <http auto-config="true">
-        <intercept-url pattern="/login*" access="isAnonymous()" />
-        <intercept-url pattern="/**" access="isAuthenticated()" />
+        <intercept-url pattern="/admin*" access="isAuthenticated()" />
 
         <form-login
                 login-page="/login"

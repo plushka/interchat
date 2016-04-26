@@ -42,7 +42,7 @@ public class RegistrationController {
             return new ModelAndView("registration", "user", accountDto);
         }
         else {
-            return new ModelAndView("index", "user", accountDto);
+            return new ModelAndView("registered", "user", accountDto);
         }
     }
 
