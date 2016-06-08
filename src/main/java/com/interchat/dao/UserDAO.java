@@ -12,4 +12,6 @@ public interface UserDAO {
 
     void removeUser(Integer id);
 
+    User findByEmail(String email);
+
 }

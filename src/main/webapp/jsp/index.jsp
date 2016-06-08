@@ -2,10 +2,10 @@
 <%@page session="true"%>
 <html>
 <body>
-<h1>Title : ${title}</h1>
-<h1>Message : ${message}</h1>
+<h1>${title}</h1>
+<h1>${message}</h1>
 
-<c:url value="/login?logout" var="logoutUrl" />
+<c:url value="/logout" var="logoutUrl" />
 
 <!-- csrt for log out-->
 <form action="${logoutUrl}" method="post" id="logoutForm">

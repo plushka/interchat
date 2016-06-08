@@ -4,7 +4,8 @@ import com.interchat.domain.User;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
+import org.springframework.util.CollectionUtils;
+
 import java.util.List;
 
 @Component
@@ -21,7 +22,7 @@ public class UserDAOImpl implements UserDAO {
 
     @SuppressWarnings("unchecked")
     public List<User> listUsers() {
-        return sessionFactory.getCurrentSession().createQuery("from Users")
+        return sessionFactory.getCurrentSession().createQuery("from User")
                 .list();
     }
 
@@ -31,6 +32,13 @@ public class UserDAOImpl implements UserDAO {
         if (null != user) {
             sessionFactory.getCurrentSession().delete(user);
         }
+    }
+
+    public User findByEmail(String email) {
+        List users = sessionFactory.getCurrentSession().createQuery("from User where email = '" + email + "'")
+                .list();
+        if (CollectionUtils.isEmpty(users)) return null;
+        return (User) users.get(0);
     }
 
 }

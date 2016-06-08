@@ -8,28 +8,31 @@
       http://www.springframework.org/schema/beans
       http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
 
-<!--<beans:bean name="security" class="com.interchat.security.SecSecurityConfig" />-->
     <http auto-config="true">
-        <intercept-url pattern="/login*" access="permitAll()" />
-        <intercept-url pattern="/j_spring_security_logout" access="permitAll()" />
-        <intercept-url pattern="/admin*" access="isAuthenticated()" />
+        <intercept-url pattern="/login" access="permitAll()" />
+        <intercept-url pattern="/logout" access="permitAll()" />
+        <intercept-url pattern="/signup" access="permitAll()" />
+        <intercept-url pattern="/" access="permitAll()" />
+        <intercept-url pattern="/**" access="isAuthenticated()" />
 
         <form-login
                 login-page="/login"
-                default-target-url="/welcome"
+                default-target-url="/chat"
                 authentication-failure-url="/login?error"
                 username-parameter="username"
                 password-parameter="password"
                 login-processing-url="/perform_login"/>
-        <logout logout-success-url="/login?logout" />
+
+        <logout logout-success-url="/"
+                delete-cookies="JSESSIONID"/>
+
         <!-- enable csrf protection -->
         <csrf/>
     </http>
     <authentication-manager>
-        <authentication-provider>
-            <user-service>
-                <user name="123" password="123" authorities="ROLE_USER" />
-            </user-service>
-        </authentication-provider>
+        <authentication-provider user-service-ref="userDetailsService" />
     </authentication-manager>
+
+    <beans:bean id="userDetailsService" class="com.interchat.security.MyUserDetailsService"/>
+
 </beans:beans>

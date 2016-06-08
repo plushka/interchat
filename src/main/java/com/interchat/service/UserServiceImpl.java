@@ -26,4 +26,9 @@ public class UserServiceImpl implements UserService {
     public void removeUser(Integer id) {
         userDAO.removeUser(id);
     }
+
+    @Override
+    public User findByEmail(String email) {
+        return userDAO.findByEmail(email);
+    }
 }
