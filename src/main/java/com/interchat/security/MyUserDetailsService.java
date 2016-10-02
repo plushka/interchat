@@ -26,12 +26,14 @@ public class MyUserDetailsService implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("No user found with username: "+ email);
         }
+        if (user.getPassword() == null) {
+            throw new UsernameNotFoundException("User with null password was found in the database");
+        }
         return  new org.springframework.security.core.userdetails.User
                 (user.getEmail(),
                         user.getPassword().toLowerCase(), true, true, true,
                         true, getAuthorities(1));
     }
-
     private Collection<? extends GrantedAuthority> getAuthorities(Integer role){
         return getGrantedAuthorities(getRoles(role));
     }
