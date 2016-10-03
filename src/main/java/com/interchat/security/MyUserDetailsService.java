@@ -34,6 +34,7 @@ public class MyUserDetailsService implements UserDetailsService {
                         user.getPassword().toLowerCase(), true, true, true,
                         true, getAuthorities(1));
     }
+    
     private Collection<? extends GrantedAuthority> getAuthorities(Integer role){
         return getGrantedAuthorities(getRoles(role));
     }
