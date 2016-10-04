@@ -4,5 +4,6 @@ notifications:
     recipients:
       - ibmttz13.5@gmail.com
       - al.zmievskiy@gmail.com
+      - garadagly@gmail.com
     on_success: always
     on_failure: always
