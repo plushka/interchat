@@ -17,6 +17,7 @@
     </bean>
 
 
+    <mvc:resources mapping="/resources/**" location="/resources/static/" />
     <import resource="controllers.xml"/>
 
     <mvc:annotation-driven>
