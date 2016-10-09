@@ -18,7 +18,7 @@ public class LoginController {
         ModelAndView model = new ModelAndView();
         model.addObject("title", "Main Chat Page");
         model.addObject("message", "Hello, "+name);
-        model.setViewName("index");
+        model.setViewName("chat");
         return model;
 
     }
