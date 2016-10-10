@@ -33,6 +33,6 @@
         <authentication-provider user-service-ref="userDetailsService" />
     </authentication-manager>
 
-    <beans:bean id="userDetailsService" class="com.interchat.security.MyUserDetailsService"/>
+    <beans:bean id="userDetailsService" class="com.interchat.security.CustomUserDetailsService"/>
 
 </beans:beans>
